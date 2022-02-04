@@ -44,6 +44,7 @@ ansible-playbook main.yml --ask-become-pass
 ```
 
 #### install yubikey manager app and pair yubikey
+https://developers.yubico.com/yubikey-manager-qt/Releases/yubikey-manager-qt-latest-mac.pkg
 
 yubikey required 
 https://unix.stackexchange.com/questions/77277/how-to-append-multiple-lines-to-a-file
