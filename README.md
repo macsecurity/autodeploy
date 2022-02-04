@@ -103,3 +103,22 @@ git@github.com:macsecurity/mac_os-config.git
 git@github.com:macsecurity/mac_os.git
 
 git@github.com:macsecurity/mac-dev-playbook.git
+
+
+```
+ssh-keygen -t ed25519-sk -C "projectpomsky@google.com"
+
+
+ssh-keygen -vvvv -t ecdsa-sk
+
+ lsusb -v 2>/dev/null | grep -A2 Yubico | grep "bcdDevice" | awk '{print $2}'
+
+brew install libfido2
+brew install openssh
+
+ykman info
+```
+
+https://support.yubico.com/hc/en-us/articles/360016649059-Using-Your-YubiKey-as-a-Smart-Card-in-macOS
+https://developers.yubico.com/PIV/Guides/Smart_card-only_authentication_on_macOS.html
+https://support.apple.com/en-us/HT208372
