@@ -187,3 +187,5 @@ https://support.apple.com/en-us/HT208372
 
 random
 echo 'export PATH=\"$HOME/Library/Python/3.8/bin:/opt/homebrew/bin:$PATH\"' >> ~/.zshrc
+
+ldap.jumpcloud.com
