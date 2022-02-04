@@ -43,6 +43,8 @@ ansible-galaxy install -r requirements.yml
 ansible-playbook main.yml --ask-become-pass
 ```
 
+#### install yubikey manager app and pair yubikey
+
 yubikey required 
 https://unix.stackexchange.com/questions/77277/how-to-append-multiple-lines-to-a-file
 ```
