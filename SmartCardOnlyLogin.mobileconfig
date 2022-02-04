@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>PayloadDescription</key>
+			<string>Configures smart card-only</string>
+			<key>PayloadDisplayName</key>
+			<string>Smart card-only</string>
+			<key>PayloadIdentifier</key>
+			<string>com.apple.configprofile.78.</string>
+			<key>PayloadOrganization</key>
+			<string>Apple</string>
+			<key>PayloadType</key>
+			<string>com.apple.security.smartcard</string>
+			<key>PayloadUUID</key>
+			<string>CE98B433-EBFF-46DB-9147-DAB10E7BB45D</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+			<key>UserPairing</key>
+			<false/>
+			<key>allowSmartCard</key>
+			<true/>
+			<key>checkCertificateTrust</key>
+			<false/>
+			<key>enforceSmartCard</key>
+			<true/>
+			<key>tokenRemovalAction</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>PayloadDescription</key>
+	<string>Smartcard profile.</string>
+	<key>PayloadDisplayName</key>
+	<string>Smart card-only</string>
+	<key>PayloadIdentifier</key>
+	<string>com.apple.configprofile.77</string>
+	<key>PayloadOrganization</key>
+	<string></string>
+	<key>PayloadRemovalDisallowed</key>
+	<false/>
+	<key>PayloadScope</key>
+	<string>system</string>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>C1F2BFE5-7321-49D6-A96D-5BEB5FEB34B8</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>
