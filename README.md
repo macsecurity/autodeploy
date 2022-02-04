@@ -43,6 +43,65 @@ ansible-galaxy install -r requirements.yml
 ansible-playbook main.yml --ask-become-pass
 ```
 
+yubikey required 
+https://unix.stackexchange.com/questions/77277/how-to-append-multiple-lines-to-a-file
+```
+# sso
+sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config_backup_`date "+%Y-%m-%d_%H:%M"`
+
+# In the sshd_config file, change "#ChallengeResponseAuthentication yes" to "ChallengeResponseAuthentication no" and change "#PasswordAuthentication yes" to "#PasswordAuthentication no.
+
+sudo launchctl stop com.openssh.sshd
+sudo launchctl start com.openssh.sshd
+
+# sudo
+sudo cp /etc/pam.d/sudo /etc/pam.d/sudo_backup_`date "+%Y-%m-%d_%H:%M"`
+
+sudo tee /etc/pam.d/sudo > /dev/null <<EOT
+# sudo: auth account password session
+auth        sufficient    pam_smartcard.so
+auth        required      pam_opendirectory.so
+auth        required      pam_deny.so
+account     required      pam_permit.so
+password    required      pam_deny.so
+session     required      pam_permit.so
+EOT
+
+# login
+sudo cp /etc/pam.d/login /etc/pam.d/login_backup_`date "+%Y-%m-%d_%H:%M"`
+
+sudo tee /etc/pam.d/login > /dev/null <<EOT
+# login: auth account password session
+auth        sufficient    pam_smartcard.so
+auth        optional      pam_krb5.so use_kcminit
+auth        optional      pam_ntlm.so try_first_pass
+auth        optional      pam_mount.so try_first_pass
+auth        required      pam_opendirectory.so try_first_pass
+auth        required      pam_deny.so
+account     required      pam_nologin.so
+account     required      pam_opendirectory.so
+password    required      pam_opendirectory.so
+session     required      pam_launchd.so
+session     required      pam_uwtmp.so
+session     optional      pam_mount.so
+EOT
+
+# su
+sudo cp /etc/pam.d/su /etc/pam.d/login_backup_`date "+%Y-%m-%d_%H:%M"`
+
+sudo tee /etc/pam.d/su > /dev/null <<EOT
+# su: auth account password session
+auth        sufficient    pam_smartcard.so
+auth        required      pam_rootok.so
+auth        required      pam_group.so no_warn group=admin,wheel ruser root_only fail_safe
+account     required      pam_permit.so
+account     required      pam_opendirectory.so no_check_shell
+password    required      pam_opendirectory.so
+session     required      pam_launchd.so
+EOT
+
+```
+
 ```
 brew install chezmoi
 brew install mas
@@ -122,3 +181,6 @@ ykman info
 https://support.yubico.com/hc/en-us/articles/360016649059-Using-Your-YubiKey-as-a-Smart-Card-in-macOS
 https://developers.yubico.com/PIV/Guides/Smart_card-only_authentication_on_macOS.html
 https://support.apple.com/en-us/HT208372
+
+random
+echo 'export PATH=\"$HOME/Library/Python/3.8/bin:/opt/homebrew/bin:$PATH\"' >> ~/.zshrc
